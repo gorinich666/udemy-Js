@@ -54,7 +54,7 @@ let appData = {
                 percent = +prompt("Под какой процент?")
     
             appData.monthIncome = save / 100 / 12 * percent;
-            alert("Доход в месяц с вашего депозита: " + appData.monthIncome):
+            alert("Доход в месяц с вашего депозита: " + appData.monthIncome);
         }
     },
     chooseOptExpenses: function() {
@@ -64,9 +64,23 @@ let appData = {
         }
     },
     chooseIncome: function() {
-        let items = promt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
-        appData.income = items.split(', '); 
+        let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
+        if (typeof(items) != 'string' || typeof(items) == null || items == ''){
+            alert("Вы ввели неверные данные")
+        } else {
+            appData.income = items.split(', ');
+            appData.income.push(prompt("Может что-то еще?"));
+            appData.income.sort();
+        }
+        
+        appData.income.forEach(function(arritem, i) {
+            alert("Способы заработка: " + " - " + arritem)
+        });
     }
 };
+
+for (let key in appData) {
+    console.log("Объект включает в себя следующие данные: " + key + " - " + appData[key]);
+}
 
 
