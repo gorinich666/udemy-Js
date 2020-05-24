@@ -63,7 +63,7 @@ let appData = {
             appData.optionalExpenses[i] = opt;     
         }
     },
-    chosseIncome: function() {
+    chooseIncome: function() {
         let items = promt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
         appData.income = items.split(', '); 
     }
